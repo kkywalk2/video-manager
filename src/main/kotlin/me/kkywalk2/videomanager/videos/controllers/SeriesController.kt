@@ -1,11 +1,9 @@
 package me.kkywalk2.videomanager.videos.controllers
 
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
-@RestController("/series")
+@RestController
+@RequestMapping("/series")
 class SeriesController {
 
     @PostMapping
