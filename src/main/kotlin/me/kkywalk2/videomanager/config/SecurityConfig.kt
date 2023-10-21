@@ -28,6 +28,7 @@ class SecurityConfig(
             httpBasic { disable() }
             authorizeRequests {
                 authorize(HttpMethod.POST, "/login", permitAll)
+                authorize(HttpMethod.POST, "/members", permitAll)
                 authorize(anyRequest, authenticated)
             }
             logout { permitAll() }

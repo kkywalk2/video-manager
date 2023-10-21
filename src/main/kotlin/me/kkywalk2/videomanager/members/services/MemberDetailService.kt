@@ -1,7 +1,7 @@
 package me.kkywalk2.videomanager.members.services
 
-import me.kkywalk2.videomanager.members.entities.Members
-import me.kkywalk2.videomanager.members.repos.MembersRepository
+import me.kkywalk2.videomanager.members.domains.Member
+import me.kkywalk2.videomanager.members.services.ports.MemberRepository
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -9,18 +9,20 @@ import org.springframework.stereotype.Service
 
 @Service
 class MemberDetailService(
-    private val membersRepository: MembersRepository,
-): UserDetailsService {
+    private val memberRepository: MemberRepository,
+) : UserDetailsService {
     override fun loadUserByUsername(email: String): UserDetails {
-        val member = membersRepository.findByEmail(email)
+        val member = memberRepository.findByEmail(email)
 
         return member.map { MemberDetails(it) }.orElseThrow()
     }
 }
 
 class MemberDetails(
-    private val member: Members
-): UserDetails {
+    private val member: Member
+) : UserDetails {
+    val id = member.id
+
     override fun getAuthorities(): Collection<GrantedAuthority> {
         return emptyList()
     }
