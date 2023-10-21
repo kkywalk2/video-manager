@@ -13,7 +13,7 @@
 - Video 관리
   - Series를 무조건 먼저 생성해야 함
   - Video는 무조건 특정 Series 나 Group에 속해야함
-  - Series를 생성하면 무조건 default group을 새엇ㅇ
+  - Series를 생성하면 무조건 default group을 속함
   - 따로 Group을 지정하지 않으면 default group에 추가됨
   - Video가 업로드 되고 나면 인코딩이 진행되고 완료되면 볼 수 있게됨
   - 실제 파일을 위한 엔드포인트는 별도 분리
