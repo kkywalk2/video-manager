@@ -7,4 +7,6 @@ interface SeriesJpaRepository : JpaRepository<SeriesJpaEntity, Long> {
 
     fun findByName(name: String): Optional<SeriesJpaEntity>
 
+    fun findByMemberId(memberId: Long): List<SeriesJpaEntity>
+
 }

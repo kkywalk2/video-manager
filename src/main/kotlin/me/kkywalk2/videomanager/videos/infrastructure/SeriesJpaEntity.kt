@@ -11,6 +11,8 @@ class SeriesJpaEntity(
 
     val name: String,
 
+    val memberId: Long,
+
     @Convert(converter = GroupsConverter::class)
     @Column(name = "group_metadata", columnDefinition = "TEXT")
     val groups: List<GroupAttribute>,
