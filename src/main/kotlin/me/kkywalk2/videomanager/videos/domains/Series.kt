@@ -16,7 +16,7 @@ data class Series(
             return Series(
                 memberId = memberId,
                 name = createSeries.name,
-                groups = listOf(Group("default group", listOf())),
+                groups = listOf(Group("default-group", listOf())),
             )
         }
     }

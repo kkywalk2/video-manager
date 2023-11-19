@@ -1,17 +1,37 @@
 package me.kkywalk2.videomanager.videos.controllers
 
 import me.kkywalk2.videomanager.core.StorageManager
+import me.kkywalk2.videomanager.members.services.MemberDetails
+import me.kkywalk2.videomanager.videos.domains.CreateVideo
+import me.kkywalk2.videomanager.videos.services.VideoService
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.stereotype.Controller
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import java.nio.file.Files
 
-@Controller
+@RestController
+@RequestMapping("videos")
 class VideoController(
+    private val videoService: VideoService,
+
+    // TODO: 제거되야함
     private val storageManager: StorageManager,
 ) {
+
+    @PostMapping
+    fun create(
+        @AuthenticationPrincipal memberDetails: MemberDetails,
+        @ModelAttribute createVideo: CreateVideo,
+    ): VideoDto {
+        val video = videoService.create(memberDetails.id, createVideo)
+        return VideoDto.from(video)
+    }
 
     //TODO: This code is for function test purposes
     @GetMapping("/hls/{segment}")

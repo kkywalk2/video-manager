@@ -29,6 +29,7 @@ class SecurityConfig(
             authorizeRequests {
                 authorize(HttpMethod.POST, "/login", permitAll)
                 authorize(HttpMethod.POST, "/members", permitAll)
+                authorize("/videos/**", permitAll)
                 authorize(anyRequest, authenticated)
             }
             logout { permitAll() }
