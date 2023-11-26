@@ -29,7 +29,7 @@ class VideoService(
         val modifiedSeries =
             series.copy(groups = series.groups.map { if (it.name == createVideo.groupName) it.copy(videoIds = it.videoIds + video.id) else it })
 
-        storageManager.uploadFile(video.path, createVideo.videoFile.bytes)
+        storageManager.uploadFile("${video.path}/${video.title}", createVideo.videoFile.bytes)
 
         seriesRepository.save(modifiedSeries)
         return videoRepository.save(video)

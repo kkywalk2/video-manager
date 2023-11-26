@@ -2,6 +2,6 @@ package me.kkywalk2.videomanager.videos.services.ports
 
 interface VideoConverter {
 
-    fun convert(): String
+    fun convert(path: String, title: String): String
 
 }

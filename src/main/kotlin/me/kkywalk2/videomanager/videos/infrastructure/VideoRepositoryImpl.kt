@@ -13,6 +13,10 @@ class VideoRepositoryImpl(
         return videoJpaRepository.save(video.toJpaEntity()).toDomainEntity()
     }
 
+    override fun getByConversionCompleteIsFalse(): List<Video> {
+        return videoJpaRepository.getByConversionComplete(false).map { it.toDomainEntity() }
+    }
+
     private fun Video.toJpaEntity(): VideoJpaEntity {
         return VideoJpaEntity(
             id = id,

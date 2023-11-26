@@ -15,6 +15,8 @@ class VideoJpaEntity(
 
     val title: String,
 
+    val conversionResult: String? = null,
+
     val conversionComplete: Boolean,
 ) {
 

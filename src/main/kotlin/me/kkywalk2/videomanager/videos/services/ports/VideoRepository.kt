@@ -6,4 +6,6 @@ interface VideoRepository {
 
     fun save(video: Video): Video
 
+    fun getByConversionCompleteIsFalse(): List<Video>
+
 }

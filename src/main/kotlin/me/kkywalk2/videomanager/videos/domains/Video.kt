@@ -5,16 +5,15 @@ data class Video(
     val memberId: Long,
     val path: String,
     val title: String,
+    val conversionResult: String? = null,
     val conversionComplete: Boolean,
-
-    // TODO: video 관련 meta 정보 추가
 ) {
 
     companion object {
         fun create(memberId: Long, createVideo: CreateVideo): Video {
             return Video(
                 memberId = memberId,
-                path = "${createVideo.seriesId}/${createVideo.groupName}/${createVideo.title}",
+                path = "${createVideo.seriesId}/${createVideo.groupName}",
                 title = createVideo.title,
                 conversionComplete = false,
             )

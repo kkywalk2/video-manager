@@ -7,3 +7,11 @@ spring:
   jpa:
     open-in-view: false
     generate-ddl: true
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+video-manager:
+  ffmpeg-path: C:\Program Files\Git\bin\ffmpeg
+  ffprobe-path: C:\Program Files\Git\bin\ffprobe
